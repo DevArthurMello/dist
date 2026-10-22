@@ -25,6 +25,42 @@
     </script>
 
     <script defer src="/_vercel/insights/script.js"></script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !(function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) :
+                    n.queue.push(arguments);
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = "2.0";
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s);
+        })(
+            window,
+            document,
+            "script",
+            "https://connect.facebook.net/en_US/fbevents.js",
+        );
+        fbq("init", "1416039367399250");
+        fbq("track", "PageView");
+    </script>
+    <noscript><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1416039367399250&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 
 <body>
@@ -58,7 +94,7 @@
               Para quem quer conhecer a profissão e dar os primeiros passos.
               Fundamentos, exemplos da prática e um projeto para desenvolver.
             </p>
-            <a class="button button-primary" data-group-cta href="#participar"
+            <a id="botao-participar" class="button button-primary" data-group-cta href="#participar"
               ><svg viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   d="M20.5 11.5a8.5 8.5 0 0 1-12.8 7.3L3 20l1.2-4.6a8.5 8.5 0 1 1 16.3-3.9Z"
@@ -448,7 +484,7 @@
             Um convite para sair da curiosidade<br />e começar a estudar com
             direção.
           </p>
-          <a class="button button-primary" data-group-cta href="#participar"
+          <a id="botao-participar" class="button button-primary" data-group-cta href="#participar"
             >Quero entrar no grupo gratuito</a
           >
           <p class="final-caption">Mentoria básica gratuita · Com THUR</p>
@@ -478,6 +514,16 @@
       <button class="button button-primary dialog-dismiss">Entendi</button>
     </dialog>
 
-
+    <script>
+      document
+        .getElementById("botao-participar")
+        .addEventListener("click", function () {
+          if (typeof window.fbq === "function") {
+            window.fbq("trackCustom", "CliqueParticipar", {
+              local: "final",
+            });
+          }
+        });
+    </script>
   </body>
 </html>

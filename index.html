@@ -54,17 +54,17 @@
         fbq("init", "4025741267719382");
         fbq("track", "PageView");
     </script>
+    
+    <!-- End Meta Pixel Code -->
+</head>
+
+<body>
     <noscript><img
         height="1"
         width="1"
         style="display: none"
         src="https://www.facebook.com/tr?id=4025741267719382&ev=PageView&noscript=1"
     /></noscript>
-    <!-- End Meta Pixel Code -->
-    <!-- End Meta Pixel Code -->
-</head>
-
-<body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <header class="site-header wrap">
         <a href="#inicio" class="wordmark" aria-label="THUR, início">THUR<span class="wordmark-dot">.</span></a
@@ -96,7 +96,7 @@
               Fundamentos, exemplos da prática e um projeto para desenvolver.
             </p>
             <a
-              id="botao-participar"
+              id="botao-participar-topo" data-local="topo"
               class="button button-primary"
               data-group-cta
               href="#participar"
@@ -490,7 +490,7 @@
             direção.
           </p>
           <a
-            id="botao-participar"
+            id="botao-participar-final" data-local="final"
             class="button button-primary"
             data-group-cta
             href="#participar"
@@ -524,15 +524,15 @@
     </dialog>
 
     <script>
-      document
-        .getElementById("botao-participar")
-        .addEventListener("click", function () {
-          if (typeof window.fbq === "function") {
-            window.fbq("trackCustom", "CliqueParticipar", {
-              local: "final",
+      document.querySelectorAll('[data-group-cta]').forEach(function (botao) {
+        botao.addEventListener('click', function () {
+          if (typeof window.fbq === 'function') {
+            window.fbq('trackCustom', 'CliqueParticipar', {
+              local: botao.dataset.local
             });
           }
         });
+      });
     </script>
   </body>
 </html>
